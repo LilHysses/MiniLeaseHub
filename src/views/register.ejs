@@ -1,0 +1,47 @@
+<%- include('partials/header') %> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+    <div class="container-registro">
+        <h1>Register new user</h1>
+        <form action="/register" method="post">
+
+            <div class="pfp-register">
+                <img src="/images/pfp.png" alt="Profile Picture">
+                <input type="file" name="u_pfp" accept="image/*">
+            </div>
+
+            <div class="inputs-registers">
+
+                <label>Name</label>
+                <input type="text" name="u_name" placeholder="Example: John" required>
+
+                <label>LastName</label>
+                <input type="text" name="u_lastname" placeholder="Example: Doe" required>
+
+                <label>Email</label>
+                <input type="email" name="u_email" placeholder="Example:pepito@gmail.com" required>
+
+                <label>Password</label>
+                <input type="password" name="u_password" required>
+
+            </div>
+
+            <div class="buttons-register">
+                <button type="submit">Register</button>
+                <a href="/home">Back</a>
+            </div>
+
+            <div class="login-register">
+                <p>Already have an account? <a href="/login">Login</a></p>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>

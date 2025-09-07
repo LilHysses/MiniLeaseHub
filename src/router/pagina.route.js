@@ -1,12 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../db/connection');
+const authController = require('../controllers/authControllers');
 
-// Ruta Home
+
+
+// HOME ROUTE
+
 router.get('/', (req, res) => {
-    res.render('home');
-})
+  res.render('home');
+});
 
+
+// REGISTER ROUTES
+
+router.get('/register', authController.getRegister);
+router.post('/register', authController.postRegister);
 
 
 module.exports = router;
