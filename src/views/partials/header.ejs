@@ -1,23 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="/css/header.css">
 </head>
 <body>
-    <nav>
-        <div class="title-nav">LeaseHub</div>
-        <ul>
-            <li><a href="/about">About us</a></li>
-            <li><a href="/contact">Contact</a></li>
-        </ul>
-        <div class="user-options">
-            <a href="/profile">My name</a>
-            <!-- ESTOS 3 LINKS DEBERIAN APARECER SOLO SI NO HAY SESION INICIADA, FALTA QUE AGREGUES 
-            EL LOGIN Y LO HAGO, LO DEJO PARA REDIRECCIONAR NAMAS -->
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-            <a href="/logout">Logout</a>
-        </div>
-    </nav>
-</body>
-</html>
+    <div class="container-father">
+        <nav>
+            <div class="header-nav">
+                <a href="/" class="logo-title"><h2>LeaseHub</h2></a>
+                <ul>
+                    <li><a href="/about">About us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/services">Services</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                    <li><a href="/states">States</a></li>
+                </ul>
+            </div>
+            <div class="user-options">
+                <% if (user) { %>
+                    <img src="<%= user.u_pfp %>" alt="Profile Picture" class="pfp">
+                    <a href="/profile"><%= user.u_name %></a>
+                    <button onclick="location.href='/logout'">Log out</button>
+                <% } else { %>
+                    <button onclick="location.href='/register'">Sign up</button>
+                    <button onclick="location.href='/login'">Log in</button>
+                <% } %>
+            </div>
+        </nav>

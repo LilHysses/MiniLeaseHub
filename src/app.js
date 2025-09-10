@@ -9,14 +9,18 @@ const routerPagina = require('./router/pagina.route');
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(path.join(__dirname, '../public')));
 // Configuración de la sesión
 app.use(session({
     secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true
 }));
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user;
+    next();
+});
 
 // Configuración de la vista
 app.set('view engine', 'ejs');
@@ -28,6 +32,6 @@ app.use('/', routerPagina);
 // Iniciar el servidor
 const port = process.env.PORT || 3000;
 
-app.listen(process.env.PORT, () => {
+app.listen(port, () => {
     console.log(`Server running on http://localhost:${port}`);
 })

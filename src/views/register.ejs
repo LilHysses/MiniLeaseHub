@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
-    <div class="container-registro">
+    <main class="container-registro">
         <h1>Register new user</h1>
-        <form action="/register" method="post">
+        <form action="/register" method="post" enctype="multipart/form-data">
 
             <div class="pfp-register">
-                <img src="/images/pfp.png" alt="Profile Picture">
-                <input type="file" name="u_pfp" accept="image/*">
+            <!-- Imagen de perfil con un ID para referencia en JavaScript -->
+                <img id="pfpImage" src="/uploads/pfp/pfpIconNormal.jpg" alt="Profile Picture">
+                <!-- Campo de entrada de archivo para seleccionar una nueva imagen -->
+                <input type="file" id="fileInput" name="u_pfp" accept="image/*">
+                <script type="text/javascript" src="/js/pfpRegister.js"></script>
             </div>
 
             <div class="inputs-registers">
@@ -25,11 +29,17 @@
                 <input type="text" name="u_lastname" placeholder="Example: Doe" required>
 
                 <label>Email</label>
-                <input type="email" name="u_email" placeholder="Example:pepito@gmail.com" required>
+                <input type="email" name="u_email" placeholder="Example@gmail.com" required>
 
                 <label>Password</label>
                 <input type="password" name="u_password" required>
 
+            </div>
+
+            <div class="message-register">
+                <% if (typeof message !== 'undefined') { %>
+                    <p class="<%= messageType %>"><%= message %></p>
+                <% } %>
             </div>
 
             <div class="buttons-register">
@@ -42,6 +52,5 @@
             </div>
             
         </form>
-    </div>
-</body>
-</html>
+    </main>
+<%- include('partials/footer') %>

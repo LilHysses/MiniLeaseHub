@@ -1,0 +1,39 @@
+<%- include('partials/header') %> 
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log in</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <main class="container-registro">
+        <h1>Log in</h1>
+        <form action="/login" method="post">
+
+            <div class="inputs-login">
+
+                <label>Email</label>
+                <input type="text" name="u_email" placeholder="Example@gmail.com" required>
+
+                <label>Password</label>
+                <input type="password" name="u_password" required>
+
+            </div>
+
+            <div class="message-login">
+                 <p><%= typeof message !== 'undefined' ? message : '' %></p> <!-- Display message if exists -->
+            </div>
+
+            <div class="buttons-login">
+                <button type="submit">Sign in</button>
+                <a href="/home">Back</a>
+            </div>
+
+            <div class="login-register">
+                <p>Do you not have an account? <a href="/register">Sign up</a></p>
+            </div>
+            
+        </form>
+    </main>
+<%- include('partials/footer') %>
