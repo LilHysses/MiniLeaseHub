@@ -45,7 +45,7 @@ exports.postLogin = (req, res) => {
             if (ValidPassword) {
                 delete user.u_password;
                 req.session.user = user;
-                return res.redirect('/');
+                return res.redirect('/api/v1/');
             } else {
                 return res.render('login', {message: 'Incorrect password', messageType: 'error' });
             }
@@ -57,9 +57,9 @@ exports.postLogin = (req, res) => {
 exports.logout = (req, res) => {
     req.session.destroy(err => {
         if (err) {
-            return res.redirect('/');
+            return res.redirect('/api/v1/');
         }
         res.clearCookie('connect.sid');
-        res.redirect('/');
+        res.redirect('/api/v1/');
     });
 }

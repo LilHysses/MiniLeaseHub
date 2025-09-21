@@ -8,7 +8,7 @@ const upload = require('../config/multer');
 // HOME ROUTE
 
 router.get('/', (req, res) => {
-  res.redirect('/home');
+  res.redirect('/api/v1/home');
 });
 
 router.get('/home', (req, res) => {

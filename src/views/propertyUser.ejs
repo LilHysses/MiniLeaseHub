@@ -1,0 +1,107 @@
+<%- include('partials/header') %> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Properties</title>
+    <link rel="stylesheet" href="/css/propertyUser.css">
+</head>
+<body>
+    <main class="container-propertyUser">
+        <div class="viewProperties">
+            <h1>My Properties</h1>
+            <% if (userProperties.length > 0) { %>
+                <div class="properties-grid">
+                    <% userProperties.forEach(property => { %>
+                        <div class="cardProperty">
+                            <div class="cardInterno">
+                                <img src="<%= property.in_p1 %>" alt="Property Picture" class="propertyImg">
+                                <div class="cardInfor">
+                                    <span class="property-name"><%= property.in_name %></span>
+                                    <span class="property-dic"><%= property.in_dic %></span>
+                                    <span class="property-price">$<%= property.in_price %></span>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            <% } else { %>
+                <p>No tienes inmuebles registrados aún.</p>
+            <% } %>
+        </div>
+        <div class="publicProperty">
+            <h1>Create new property</h1>
+            <form action="/api/v1/properties/propertyUser" method="post" enctype="multipart/form-data">
+
+                <div class="inputs-propertyUser">
+
+                    <label>Property Name</label>
+                    <input type="text" name="in_name" placeholder="Example: House Big for Family" required>
+
+                    <label>Property Description</label>
+                    <textarea name="in_desc" placeholder="Write your state here..." required></textarea>
+
+                    <label>How many rooms?</label>
+                    <input type="number" name="in_room" placeholder="Example: 3" required>
+
+                    <label>How many bathrooms?</label>
+                    <input type="number" name="in_bath" placeholder="Example: 3" required>
+
+                    <label>How many kitchen?</label>
+                    <input type="number" name="in_kitchen" placeholder="Example: 3" required>
+
+                    <label>Property Address</label>
+                    <input type="text" name="in_dic" placeholder="Example: 123 Main St, City, Country" required>
+
+                    <label>Property Price</label>
+                    <input type="number" name="in_price" placeholder="Example: 1000" required>
+
+                    <label>Payment method</label>
+                    <select name="p_id" required>
+                        <option value="">-- Select --</option>
+                        <% paymentMethods.forEach(method => { %>
+                            <option value="<%= method.p_id %>"><%= method.p_metodo %></option>
+                        <% }); %>
+                    </select>
+
+                    <label>Property Type</label>
+                    <select name="ti_id" required>
+                        <option value="">-- Select --</option>
+                        <% propertyTypes.forEach(tp => { %>
+                            <option value="<%= tp.ti_id %>"><%= tp.ti_tipo %></option>
+                        <% }); %>
+                    </select>
+                </div>
+
+                <div class="img-inputs-propertys">
+                    <label>Image #1</label>
+                    <input type="file" id="fileInputProperty" name="in_p1" accept="image/*">
+
+                    <label>Image #2</label>
+                    <input type="file" id="fileInputProperty" name="in_p2" accept="image/*">
+
+                    <label>Image #3</label>
+                    <input type="file" id="fileInputProperty" name="in_p3" accept="image/*">
+
+                    <label>Image #4</label>
+                    <input type="file" id="fileInputProperty" name="in_p4" accept="image/*">
+                </div>
+
+                <div class="buttons-propertyUser">
+                    <button type="submit">Post State</button>
+                    <a href="/api/v1/home">Back</a>
+                </div>
+
+                <div class="message-stateUser">
+                    <% if (typeof message !== 'undefined') { %>
+                        <p class="<%= messageType %>"><%= message %></p>
+                    <% } %>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

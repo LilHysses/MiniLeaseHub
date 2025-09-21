@@ -4,6 +4,7 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/* HEADER  */
 .container-father {
     display: grid;
     min-height: 100vh;
@@ -54,22 +55,73 @@ ul li a:hover {
 .user-options {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
 
-.user-options a {
+.user-menu {
+    position: relative; /* clave para el menú desplegable */
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.user-menu .user-name {
+    color: white;
+    padding: 8px 12px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.user-menu:hover .arrow {
+    transform: rotate(180deg);
+}
+
+
+.user-name .arrow {
+    display: inline-block;
+    transition: transform 0.2s ease;
+    font-size: 0.8em;
+}
+
+/* Menú desplegable */
+.menu-vertical {
+    min-width: 250px;
+    position: absolute;
+    top: 100%;
+    left: -40px;
+    display: none;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.85);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    padding: 6px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+}
+
+.user-menu:hover .menu-vertical {
+    display: flex;
+    opacity: 1;
+}
+
+.menu-vertical span a {
+    display: block;
     color: white;
     text-decoration: none;
-    margin-right: 15px;
-    font-size: 16px;
+    padding: 12px 20px;
 }
 
-.user-options a:hover {
-    text-decoration: underline;
+.menu-vertical span:hover {
+    background-color: #20526c;
 }
+
 
 .user-options .pfp {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     margin-right: 10px;
     object-fit: cover;
@@ -89,4 +141,353 @@ ul li a:hover {
 
 .user-options button:hover {
     background-color: #20526c;
+}
+ 
+/* FOOTER  */
+
+footer {
+    position: relative;
+    top: 10vh; /* Ajustado para mejor proporción */
+    clear: both;
+    background: #262626;
+    color: #fff;
+    padding: 40px 0 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+    border-top: 3px solid #10b981; /* Línea verde que coincide con tu header */
+}
+
+/* Contenedor principal del footer */
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+/* Logo del footer */
+.footer-logo h3 {
+    font-size: 2rem;
+    color: #10b981; /* Verde que coincide con tu header */
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.footer-logo h3:hover {
+    transform: scale(1.05);
+    color: #059669;
+    text-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
+}
+
+/* Información de contacto */
+.footer-contact {
+    text-align: center;
+    position: relative;
+}
+
+.footer-contact p {
+    margin: 8px 0;
+    font-size: 1rem;
+    color: #ecf0f1;
+    line-height: 1.6;
+    transition: color 0.3s ease;
+}
+
+.footer-contact .email {
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.footer-contact a {
+    color: #10b981; /* Verde consistente */
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 2px 4px;
+    border-radius: 4px;
+}
+
+.footer-contact a:hover {
+    color: #ffffff;
+    background-color: #10b981;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+}
+
+.footer-contact a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background: #10b981;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.footer-contact a:hover::after {
+    width: 100%;
+}
+
+/* Redes sociales */
+.footer-social {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    color: #ecf0f1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.social-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.social-icon:hover::before {
+    left: 100%;
+}
+
+.social-icon:hover {
+    color: #ffffff;
+    background: #10b981;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+    border-color: #059669;
+}
+
+.social-icon:nth-child(1):hover {
+    background: #1877f2; /* Facebook blue */
+    box-shadow: 0 8px 25px rgba(24, 119, 242, 0.4);
+}
+
+.social-icon:nth-child(2):hover {
+    background: #1da1f2; /* Twitter blue */
+    box-shadow: 0 8px 25px rgba(29, 161, 242, 0.4);
+}
+
+.social-icon:nth-child(3):hover {
+    background: #0077b5; /* LinkedIn blue */
+    box-shadow: 0 8px 25px rgba(0, 119, 181, 0.4);
+}
+
+/* Sección de copyright */
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.footer-bottom::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #10b981, transparent);
+}
+
+.footer-bottom p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: #bdc3c7;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-bottom:hover p {
+    opacity: 1;
+}
+
+/* Efectos especiales para favoritos */
+.footer-favorite-added {
+    animation: favoriteGlow 2s ease-out;
+}
+
+@keyframes favoriteGlow {
+    0% {
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+        border-top-color: #10b981;
+    }
+    50% {
+        box-shadow: 0 -8px 32px rgba(16, 185, 129, 0.3), 0 0 50px rgba(16, 185, 129, 0.2);
+        border-top-color: #059669;
+        transform: translateY(-3px);
+    }
+    100% {
+        box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.15);
+        border-top-color: #10b981;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    footer {
+        top: 10vh; /* Menos espacio en móviles */
+        padding: 30px 0 15px 0;
+    }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 25px;
+        padding: 0 20px;
+        text-align: center;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+    
+    .footer-contact {
+        order: 2;
+    }
+    
+    .footer-contact p {
+        position: static; /* Resetear posiciones relativas en móvil */
+        right: auto;
+    }
+    
+    .footer-contact .email {
+        position: static;
+        right: auto;
+    }
+    
+    .footer-social {
+        order: 3;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .social-icon {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
+    .footer-bottom {
+        margin-top: 20px;
+        padding-top: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        top: 8vh;
+        padding: 25px 0 15px 0;
+    }
+    
+    .footer-container {
+        padding: 0 15px;
+        gap: 20px;
+    }
+    
+    .footer-logo h3 {
+        font-size: 1.4rem;
+    }
+    
+    .footer-contact p {
+        font-size: 0.9rem;
+    }
+    
+    .footer-social {
+        gap: 12px;
+    }
+    
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem;
+        padding: 0 10px;
+    }
+}
+
+/* Mejoras de accesibilidad */
+.social-icon:focus {
+    outline: 3px solid #10b981;
+    outline-offset: 2px;
+}
+
+.footer-contact a:focus {
+    outline: 2px solid #10b981;
+    outline-offset: 2px;
+}
+
+/* Efectos adicionales sutiles */
+
+.footer-container > div {
+    transition: transform 0.3s ease;
+}
+
+.footer-container > div:hover {
+    transform: translateY(-3px);
+}
+
+/* Partículas decorativas (opcional) */
+.footer-container::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 20%;
+    width: 4px;
+    height: 4px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 
+        20px 10px 0 #10b981,
+        40px -5px 0 #059669,
+        -10px 15px 0 #10b981,
+        60px 20px 0 #059669;
+    opacity: 0.6;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translateY(-10px);
+        opacity: 1;
+    }
 }
